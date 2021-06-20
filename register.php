@@ -1,43 +1,6 @@
 <?php require_once('include/header_outer.php'); ?>
-<?php require_once('include/api.php'); ?>
 
-
-<?php 
-
-$message = 'Login into your account to continue...';
-$color = 'grey-text';
-
-if(isset($_POST['login']))
-{
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $api = new Api;
-
-  $loginResponse = $api->doLogin($email,$password);
-
-  if(!$loginResponse->error)
-  {
-    $user = $loginResponse->user;
-    $_SESSION['id'] = $user->id;
-    $_SESSION['name'] = $user->name;
-    $_SESSION['email'] = $user->email;
-    $_SESSION['image'] = $user->image;
-    $_SESSION['username'] = $user->username;
-    $token = $user->token;
-    setcookie('token',$token);
-    header('LOCATION:home.php');
-  }
-  else
-  {
-    $message = $loginResponse->message;
-    $color = 'red-text';
-  }
-
-}
-
- ?>
-
-      <div class="row mt140">
+      <div class="row mt130">
         <div class="col s12 m6 offset-m3 l6 offset-l3">
             <div class="card br20">
               <div class="card-content">
@@ -51,12 +14,16 @@ if(isset($_POST['login']))
                   </div>
                    <div class="col s12 m6 l6">
                     <div class="p20">
-                    <h5 class="bold ">Login</h5>
-                      <p class=" <?php echo $color; ?>"><?php echo $message; ?></p>
-                        <form method="post">
+                    <h5 class="bold">Register</h5>
+                      <p class="grey-text" id="registerMessage">Register an account to continue...</p>
+                          <div class="input-field">
+                            <i class="material-icons prefix red-text">person</i>
+                            <input type="text" name="name" id="name">
+                            <label for="name">Enter Name</label>
+                          </div>
                           <div class="input-field">
                             <i class="material-icons prefix red-text">email</i>
-                            <input type="text" name="email" id="email">
+                            <input type="email" name="email" id="email">
                             <label for="email">Enter Email</label>
                           </div>
                            <div class="input-field">
@@ -64,14 +31,12 @@ if(isset($_POST['login']))
                             <input type="password" name="password" id="password">
                             <label for="password">Enter Password</label>
                           </div>
-                          <a class="blue-text right" href="forgot.php">Forgot Password?</a>
                           <div class="input-field">
-                            <input type="submit" class="btn red loginBtn" value="Login" name="login" id="login">
+                            <input type="submit" onclick="doRegister()" class="btn red registerBtn" value="Register" name="register" id="register">
                           </div>
                           <div class="center">
-                            <span>Don't have an account? </span><a class="bold" href="register.php">Register</a>
+                            <span>Already have an account? </span><a class="bold" href="index.php">Login</a>
                           </div>
-                        </form>
                     </div>
                   </div>
                 </div>
@@ -80,4 +45,4 @@ if(isset($_POST['login']))
         </div>
       </div>
 
-      <?php require_once('include/footer_outer.php'); ?>
+<?php require_once('include/footer_outer.php'); ?>
