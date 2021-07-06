@@ -9,7 +9,7 @@
                     <div class="center p20">
                       <img src="src/img/logo.png" class="responsive-img" alt="Social Codia" width="120">
                       <p class="bold">Social Media helps you to connect and share thoughts with the people.</p>
-                      <img src="src/img/login.svg" class="responsive-img p20" alt="Social Codia" width="240">
+                      <img src="src/img/register.png" class="responsive-img p20" alt="Social Codia" width="240">
                     </div>
                   </div>
                    <div class="col s12 m6 l6">
@@ -35,7 +35,7 @@
                             <input type="submit" onclick="doRegister()" class="btn red registerBtn" value="Register" name="register" id="register">
                           </div>
                           <div class="center">
-                            <span>Already have an account? </span><a class="bold" href="index.php">Login</a>
+                            <span>Already have an account? </span><a class="bold" href="login">Login</a>
                           </div>
                     </div>
                   </div>
