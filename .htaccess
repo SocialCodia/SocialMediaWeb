@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^login$ index.php
+RewriteRule ^register$ register.php
+RewriteRule ^home$ home.php
+RewriteRule ^verifyEmail/([a-zA-Z0-9$=.]+)/([a-zA-Z0-9$=.]+) verifyEmail.php?email=$1&code=$2
